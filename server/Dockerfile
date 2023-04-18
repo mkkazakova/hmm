@@ -1,11 +1,11 @@
-FROM ubuntu:latest
+# То же самое, что и в серверном Dockerfile.
 
-RUN apt-get update && \
-    apt-get install -y g++
+FROM python:latest
 
-WORKDIR /app/
-COPY . /app/
+# Импортируем 'client.py' в папку '/client/'.
 
-RUN g++ -o server server.cpp
+ADD client.py /client/
 
-CMD ["./server"]
+# Устанавливаем в качестве рабочей директории '/client/'.
+
+WORKDIR /client/
